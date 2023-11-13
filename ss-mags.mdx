@@ -1,76 +1,28 @@
 ---
-title: Delegates in C#
-date: 2023-11-13
-tags: C#, Delegates, Event Handling, Callbacks
+title: 'Just Testing'
+date: '2023-04-28'
+tags: ['next.js','nextjs','new']
 ---
 
-# Generics in C#
+We recommend using **Static Generation** (with and without data) whenever possible because your page can be built once and served by CDN, which makes it much faster than having a server render the page on every request.
 
-Generics in C# are a powerful feature that allows you to define classes, interfaces, and methods with a placeholder for the type of data they store or use. This feature makes your code more reusable, type-safe, and efficient. Here's a detailed explanation of various aspects of generics in C#:
+```ts
+const sum = (num1: number, num2: number): number => {
+    return num1 + num2
+}
 
-## 1. Basic Concept of Generics
+console.log(sum(4,8)) //12
+```
 
-- **Type Safety**: Generics enforce type safety, allowing you to create a collection that operates on a specific type rather than on `object`. This avoids the need for type casting and reduces the risk of runtime errors.
-- **Code Reusability**: They enable you to write a class or method that can work with any data type. You write the code once and then reuse it with different types.
+You can use Static Generation for many types of pages, including:
 
-## 2. Generic Classes
+- Marketing pages
+- Blog posts
+- E-commerce product listings
+- Help and documentation
 
-### Definition
+You should ask yourself: "Can I pre-render this page **ahead** of a user's request?" If the answer is yes, then you should choose Static Generation.
 
-A generic class has a type parameter in its definition. For example, `List<T>` is a generic list that can store elements of any type.
+On the other hand, Static Generation is **not** a good idea if you cannot pre-render a page ahead of a user's request. Maybe your page shows frequently updated data, and the page content changes on every request.
 
-### Usage
-
-When creating an instance of a generic class, you specify the type it will hold, e.g., `List<int>` for a list of integers.
-
-## 3. Generic Methods
-
-- **Flexible Methods**: You can define methods with generic parameters, allowing them to work with various types.
-- **Example**: A generic method to compare two objects of the same type could be defined as `bool Compare<T>(T x, T y)`.
-
-## 4. Generic Interfaces
-
-### Interface Definition
-
-Like classes, interfaces can be generic too. For instance, `IEnumerable<T>` is a generic interface in the .NET framework.
-
-### Implementing Generic Interfaces
-
-When a class implements a generic interface, it specifies the type it will use.
-
-## 5. Constraints on Type Parameters
-
-- **Purpose**: Constraints specify the requirements that type arguments must satisfy.
-- **Types of Constraints**: These include `where T : struct` (value types), `where T : class` (reference types), `where T : new()` (types with a default constructor), and `where T : <interface name>` (types that implement a specific interface).
-
-## 6. Variance in Generics
-
-- **Covariance and Contravariance**: These allow you to use a more derived (covariance) or more generic (contravariance) type than originally specified. 
-- **Use in Delegates and Interfaces**: Covariance and contravariance are primarily used in delegates and interfaces in C#.
-
-## 7. Generic Collections in .NET
-
-- **Framework Collections**: The .NET Framework provides a range of generic collections like `List<T>`, `Dictionary<TKey, TValue>`, and `Queue<T>`.
-- **Advantages**: These collections offer type safety and performance benefits over non-generic collections like `ArrayList`.
-
-## 8. Performance Considerations
-
-- **Memory Efficiency**: Generics have a performance advantage because they reduce boxing and unboxing operations.
-- **JIT Optimizations**: The Just-In-Time (JIT) compiler can make specific optimizations for different types, improving performance.
-
-## 9. Best Practices
-
-- **Use Generics Where Appropriate**: Utilize generics to increase code reusability and maintainability.
-- **Naming Conventions**: Use descriptive names for generic type parameters (e.g., `TKey` and `TValue` for dictionary keys and values).
-
-## 10. Advanced Concepts
-
-- **Generic Delegates**: Like methods and classes, delegates can be generic too.
-- **Reflection with Generics**: You can use reflection to inspect generic types and methods, although it’s more complex than with non-generic types.
-
-## 11. Examples and Use Cases
-
-- **Custom Generic Classes**: You might create a generic data structure, like a binary tree or a graph that operates on any type.
-- **Generic Algorithms**: Implement algorithms that can operate on collections of any type.
-
-Generics in C# offer a blend of flexibility and type safety, making them a fundamental tool for effective programming in the .NET environment. They allow developers to write more abstract, reusable code while still benefiting from the strong type checking provided by the C# compiler.
+In that case, you can use **Server-Side Rendering**. It will be slower, but the pre-rendered page will always be up-to-date. Or you can skip pre-rendering and use client-side JavaScript to populate data.
